@@ -31,6 +31,7 @@ using Markdig.Extensions.Tables;
 using Markdig.Extensions.TaskLists;
 using Markdig.Extensions.TextRenderer;
 using Markdig.Extensions.Yaml;
+using Markdig.Extensions.PlantUmlRender;
 using Markdig.Parsers;
 using Markdig.Parsers.Inlines;
 
@@ -481,6 +482,12 @@ namespace Markdig
             return pipeline;
         }
 
+        public static MarkdownPipelineBuilder UsePlantUmlRenderServer(this MarkdownPipelineBuilder pipeline, string url)
+        {
+
+            pipeline.Extensions.AddIfNotAlready(new PlantUmlRenderExtension(url));
+            return pipeline;
+        }
         /// <summary>
         /// Configures the pipeline using a string that defines the extensions to activate.
         /// </summary>
